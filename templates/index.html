@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Akıllı Tarif Defteri</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>🤖 Akıllı Tarif Defteri</h1>
+        <p>Elindeki malzemeleri gir, yapay zeka sana özel bir tarif oluştursun!</p>
+    </header>
+
+    <main>
+        <form method="POST">
+            <label for="ingredients">Malzemeleri virgülle ayırarak girin (örn: tavuk, brokoli, pirinç):</label>
+            <input type="text" id="ingredients" name="ingredients" required>
+            <button type="submit">Tarif Oluştur</button>
+        </form>
+
+        {% if recipe %}
+        <div class="recipe-card">
+            <h2>{{ recipe.title }}</h2>
+            <p class="story">**Hikayesi:** {{ recipe.story }}</p>
+            
+            <h3>Adımlar:</h3>
+            <ol class="steps">
+                {% for step in recipe.steps %}
+                    <li>{{ step }}</li>
+                {% endfor %}
+            </ol>
+
+            <div class="summary">
+                **Besin Özeti:** {{ recipe.nutritional_summary }}
+            </div>
+        </div>
+        {% endif %}
+    </main>
+</body>
+</html>
