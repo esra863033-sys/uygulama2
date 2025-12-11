@@ -1,0 +1,4 @@
+Flask
+requests
+# Eğer yapay zeka API'si kullanacaksanız (Örn: openai)
+# openai
